@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+ <html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static  '/css/youtube.css'%}">
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+        <script src="{% static '/js/news.js' %}"></script>
+    </head>
+    <body>
+
+        <!-- header -->
+        <header>
+            <div class = "navigation-container">
+                <div class = "top-head">
+                    <div class = "web-name">
+                        <h1>BETA</h1>
+                    </div>
+
+                    <div class = "ham-btn">
+                        <span>
+                            <i class = "fas fa-bars"></i>
+                        </span>
+                    </div>
+
+                    <div class = "times-btn">
+                        <span>
+                            <i class = "fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- nav bar -->
+
+                <div class = "nav-bar" id = "nav-bar">
+                    <nav>
+                        <ul>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/">stream</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/new/">search</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/notifications/">notifications</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/direct/">inbox</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/profile/admin/">profile: admin</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/new_post/">New Post</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/news/">News</a></li>
+                            <li><a href = "https://afternoon-hollows-57328.herokuapp.com/tutoring/">Tutoring Forum</a></li>
+                            <li><a href = "#">Settings</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+        </header>
+ <section class = "banner">
+            <div class = "banner-main-content">
+                <h2>Search for educational videos</h2>
+                <h3>videos enhances the learning experience</h3>
+
+                    <form method="POST">
+                           <td>{% csrf_token %}
+                 <input type="text" name="search" class="roundCorner">
+                </td>
+                <td>
+                    <button type="submit" > Search</button>
+                </td>
+                </form>
+            </div>
+
+
+
+        </section>
+
+  <main>
+            <section class = "main-container-right">
+
+
+  {% for Video_Information_list in videoInformationList %}
+       <hr>
+                <article>
+
+ <h4> </h4>
+                    <div>
+
+                        <h2>{{ Video_Information_list.title }}</h2>
+
+
+
+                        <a href = "{{  Video_Information_list.url  }}">Read More <span>>></span></a>
+                    </div>
+                    <img src = "{{ Video_Information_list.thumbnail  }}">
+
+
+                </article>
+
+ {% endfor %}
+
+            </section>
+        </main>
+
+        <footer>
+            <div class = "footer-container">
+                <div class = "footer-left">
+                    <h2>BETA</h2>
+                    <p>Beta is here to provide you with the best videos possible. We do not claim that any of these videos are our own, but instead, they are free resources for you. </p>
+                </div>
+
+                <div class = "footer-right">
+                    <h2>Subscribe</h2>
+                    <p>Subscribe to receive more news from Beta!</p>
+
+                    <div>
+                        <input type = "text" placeholder = "Email Address">
+                        <i class = "fas fa-envelope"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+
+        <script src="../js/news.js" async defer></script>
+    </body>
+</html>
